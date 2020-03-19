@@ -1,0 +1,7 @@
+C:\Users\James\source\repos\TextBasedCombat\bin\Debug\TextBasedCombat.exe.config
+C:\Users\James\source\repos\TextBasedCombat\bin\Debug\TextBasedCombat.exe
+C:\Users\James\source\repos\TextBasedCombat\bin\Debug\TextBasedCombat.pdb
+C:\Users\James\source\repos\TextBasedCombat\obj\Debug\TextBasedCombat.csprojAssemblyReference.cache
+C:\Users\James\source\repos\TextBasedCombat\obj\Debug\TextBasedCombat.csproj.CoreCompileInputs.cache
+C:\Users\James\source\repos\TextBasedCombat\obj\Debug\TextBasedCombat.exe
+C:\Users\James\source\repos\TextBasedCombat\obj\Debug\TextBasedCombat.pdb
