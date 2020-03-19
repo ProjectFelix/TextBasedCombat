@@ -39,6 +39,20 @@ I will start off by creating both systems of combat, where I can switch off betw
 how everything looks, and maybe further down the line I can settle on one and focus on cleaning it
 up. But, this is just a personal side project, and dont have to worry about appeasing a player base.
 
+Update 19/03/2020:
+  Okay, I think I have the basic foundation complete. We have a player, we have a template for mobs,
+  we have rooms, and we have a starter combat algorithm
+
+###### Plans for the future:
+- Stats! What is an RPG without stats!? This will lay down the foundation for the next item...
+- Items! What is an RPG without items!? Im thinking I will create some basic player armor slots.
+- Inventory. Gotta store all those phat lewtz in your backpack until you can sell the stuff you dont need.
+- Skills. Why worry about mitigating damage when you can maybe dodge an attack entirely?
+- Spells. Now cast fireballs at your enemies or heal yourself. Or cast fireballs at yourself. Im not judging.
+- Experience. With exp, we can level, get stronger, gain skill points, etc.
+- Loot! Now we have everything in place to start slaying and getting sweet, sweet loot.
+- Many more ideas, but we have quite the list already....
+
 
 If you have any comments, questions, suggestions, whatever, email me at james.bieling@outlook.com
 
