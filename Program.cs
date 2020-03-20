@@ -30,6 +30,7 @@ namespace TextBasedCombat
                 GameState.Player.DisplayPrompt();
                 userInput = Console.ReadLine();
                 commands = userInput.Split(' ');
+              
                 switch (commands[0])
                 {
                     case "look":
@@ -38,16 +39,38 @@ namespace TextBasedCombat
                     case "kill":
                         foreach (Unit mob in GameState.Player.CurrentRoom.Mobs)
                         {
-                            if (mob.Name.Contains(commands[1]))
+                            if (mob.Name.ToLower().Contains(commands[1].ToLower()))
                             {
-                                StartCombat(mob);
+                                // This is the delay-based combat. But its running on the main thread
+                                //StartCombat(mob);
+
+                                // This is the round-based combat. Spawns a combat thread so player can still issue commands.
+                                RoundCombat.SpawnCombatThread(mob);
                                 break;
                             }
                         }
                         break;
                     case "help":
-                        Console.WriteLine("Type \"kill <mob>\" to attack a mob");
-                        Console.WriteLine("Type \"look\" to see the room you are in");
+                        Console.WriteLine("\nkill <mob> - Attack a mob");
+                        Console.WriteLine("look - See the room you are in");
+                        Console.WriteLine("flee - Attempt to escape combat.");
+                        Console.WriteLine("quit - Exit the game");
+                        break;
+                    case "flee":
+                        if (!GameState.Player.inCombat) Console.WriteLine("You aren't in combat!");
+                        else
+                        {
+                            Random r = new Random();
+                            if (r.Next(100) > 25)
+                            {
+                                Console.WriteLine("You flee from combat!");
+                                GameState.Player.inCombat = false;
+                            }
+                            else Console.WriteLine($"{RoundCombat.Enemy.Name} blocks you from fleeing!");
+                        }
+                        break;
+                    case "quit":
+                        GameState.IsPlaying = false;
                         break;
                     default:
                         break;
@@ -56,12 +79,11 @@ namespace TextBasedCombat
                 }
             }
 
-            //StartCombat(GameState.Mobs[0]);
 
-            // TODO: Implement round-based combat with prompt for health display and mob condition.
 
         }
 
+        // Everything below is for delay-based combat. Switch the methods in the "kill" case to see this.
         static void MyCombat()
         {
             Random rand = new Random();
@@ -105,6 +127,8 @@ namespace TextBasedCombat
                     you.inCombat = false;
                     you.Targeting = null;
                     Console.ForegroundColor = ConsoleColor.White;
+                    GameState.IsPlaying = false;
+                    Console.WriteLine(" You are DEAD. Game over.");
                     return;
                 }
                 Console.ForegroundColor = ConsoleColor.White;
@@ -120,7 +144,6 @@ namespace TextBasedCombat
             GameState.Player.Targeting = npc;
             Parallel.Invoke(MyCombat, NPCCombat);
         }
-
 
     }
 }

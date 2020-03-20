@@ -13,6 +13,7 @@ namespace TextBasedCombat
         public int MaxHealth;
         public int[] Damage;
         public bool inCombat;
+        public int NumAttacks;
         public Unit Targeting;
         public Room CurrentRoom;
 
@@ -22,6 +23,7 @@ namespace TextBasedCombat
             MaxHealth = 400;
             Damage = new int[] { 6, 12 };
             inCombat = false;
+            NumAttacks = 2;
         }
 
         public void DisplayPrompt()

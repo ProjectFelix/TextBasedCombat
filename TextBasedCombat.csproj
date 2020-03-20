@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameState.cs" />
+    <Compile Include="RoundCombat.cs" />
     <Compile Include="World\Map.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />

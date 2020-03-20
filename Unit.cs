@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace TextBasedCombat
 {
-    class Unit
+    class Unit 
     {
         public string Name;
         public int Health;
         public int[] Damage;
         public string RoomDesc;
+        public int NumAttacks;
 
         public Unit(string name, int health, int[] damage, string roomDesc)
         {
@@ -19,6 +20,8 @@ namespace TextBasedCombat
             Health = health;
             Damage = damage;
             RoomDesc = roomDesc;
+            NumAttacks = 2;
         }
+
     }
 }
