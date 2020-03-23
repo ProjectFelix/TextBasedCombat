@@ -10,20 +10,20 @@ namespace TextBasedCombat
 {
     class Player
     {
-        public int CurrentHealth;
-        public int MaxHealth;
-        public int CurrentMana;
-        public int MaxMana;
-        public int[] Damage;
-        public bool inCombat;
-        public int NumAttacks;
-        public Unit Targeting;
-        public Room CurrentRoom;
-        public List<Item> Inventory;
-        public int Armor;
-        public int DodgeChance;
-        public float CritChance;
-        public Dictionary<string, Item> EquippedItems = new Dictionary<string, Item>
+        public int CurrentHealth { get; set; }
+        public int MaxHealth { get; set; }
+        public int CurrentMana { get; set; }
+        public int MaxMana { get; set; }
+        public int[] Damage { get; set; }
+        public bool inCombat { get; set; }
+        public int NumAttacks { get; set; }
+        public Unit Targeting { get; set; }
+        public Room CurrentRoom { get; set; }
+        public List<Item> Inventory { get; set; }
+        public int Armor { get; set; }
+        public int DodgeChance { get; set; }
+        public float CritChance { get; set; }
+        public Dictionary<string, Item> EquippedItems { get; set; } = new Dictionary<string, Item>
         {
             {"Head", null },
             {"Chest", null },

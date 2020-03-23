@@ -10,9 +10,9 @@ namespace TextBasedCombat
 {
     static class GameState
     {
-        public static List<Unit> Mobs = new List<Unit>();
-        public static Player Player = new Player();
-        public static bool IsPlaying = true;
+        public static List<Unit> Mobs { get; set; } = new List<Unit>();
+        public static Player Player { get; set; } = new Player();
+        public static bool IsPlaying { get; set; } = true;
 
         public static void GameInit()
         {

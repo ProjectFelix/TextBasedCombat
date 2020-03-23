@@ -8,8 +8,8 @@ namespace TextBasedCombat.World
 {
     class Node
     {
-        public Room Room;
-        public List<Room> Links;
+        public Room Room { get; set; }
+        public List<Room> Links { get; set; }
 
         public Node(Room room)
         {

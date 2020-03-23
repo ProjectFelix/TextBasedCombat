@@ -8,11 +8,11 @@ namespace TextBasedCombat
 {
     class Unit 
     {
-        public string Name;
-        public int Health;
-        public int[] Damage;
-        public string RoomDesc;
-        public int NumAttacks;
+        public string Name { get; set; }
+        public int Health { get; set; }
+        public int[] Damage { get; set; }
+        public string RoomDesc { get; set; }
+        public int NumAttacks { get; set; }
 
         public Unit(string name, int health, int[] damage, string roomDesc)
         {

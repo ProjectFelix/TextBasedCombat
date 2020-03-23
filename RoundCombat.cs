@@ -9,8 +9,8 @@ namespace TextBasedCombat
 {
     static class RoundCombat
     {
-        public static Unit Enemy;
-        public static Thread CombatThread;
+        public static Unit Enemy { get; set; }
+        public static Thread CombatThread { get; set; }
 
         public static void SpawnCombatThread(Unit mob)
         {
