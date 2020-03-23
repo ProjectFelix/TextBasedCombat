@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TextBasedCombat.World;
+using TextBasedCombat.Items;
 
 namespace TextBasedCombat
 {
@@ -16,6 +17,7 @@ namespace TextBasedCombat
             string userInput;
             string[] commands;
             Console.ForegroundColor = ConsoleColor.White;
+            string[] possibleCommands = { "inventory", "look", "equip", "kill", "flee" };
 
             /* So this is my implementation of combat with different attack delays.
              * The hard part is figuring out how to display current status of player
@@ -30,6 +32,10 @@ namespace TextBasedCombat
                 GameState.Player.DisplayPrompt();
                 userInput = Console.ReadLine();
                 commands = userInput.Split(' ');
+                foreach (string command in possibleCommands)
+                {
+                    if (command.StartsWith(commands[0])) commands[0] = command;
+                }
               
                 switch (commands[0])
                 {
@@ -51,10 +57,13 @@ namespace TextBasedCombat
                         }
                         break;
                     case "help":
-                        Console.WriteLine("\nkill <mob> - Attack a mob");
-                        Console.WriteLine("look - See the room you are in");
+                        Console.WriteLine("\nkill <mob> - Attack a mob.");
+                        Console.WriteLine("look - See the room you are in.");
                         Console.WriteLine("flee - Attempt to escape combat.");
-                        Console.WriteLine("quit - Exit the game");
+                        Console.WriteLine("quit - Exit the game.");
+                        Console.WriteLine("equip - View equipped items.");
+                        Console.WriteLine("equip <item> - Equip item.");
+                        Console.WriteLine("inv - View inventory.");
                         break;
                     case "flee":
                         if (!GameState.Player.inCombat) Console.WriteLine("You aren't in combat!");
@@ -71,6 +80,27 @@ namespace TextBasedCombat
                         break;
                     case "quit":
                         GameState.IsPlaying = false;
+                        break;
+                    case "equip":
+                        if (commands.Length == 1)
+                        {
+                            GameState.Player.DisplayEquipment();
+                            break;
+                        }
+                        Item toEquip = null;
+                        foreach (Item invItem in GameState.Player.Inventory)
+                        {
+                            if (invItem.Name.ToLower().Contains(commands[1].ToLower()))
+                            {
+                                toEquip = invItem;
+                                break;
+                            }
+                        }
+                        if (toEquip == null) Console.WriteLine("You do not have that item.");
+                        GameState.Player.EquipItem(toEquip);
+                        break;
+                    case "inventory":
+                        GameState.Player.DisplayInventory();
                         break;
                     default:
                         break;
