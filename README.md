@@ -3,15 +3,14 @@
 
  I originally created something similar using Python while at work running our simulators.
  Those computers are kept in a secret space... so I am unable to extract them from the work
- computers and continue working on them (I had so, so many little projects). So I guess now
- is a good time to start over using C#, although I will be missing some of the niceties that
- come with using Python like list comprehension and tuple unpacking.
+ computers and continue working on them. So I thought this would be a good opportunity to
+ re-create a fun project while also learning C#!
 
  ## History
  I played MUDs (Multi-User Dungeons) in the 90's and even a little in the early 2000's.
  What I love about MUDs is that they are like interactive novels. Everything is text-based,
  and you build this world in your head based on the descriptions you read. Where current
- day games are judged on their graphics, in MUDs you are limited by your own imagination.
+ day games are judged on their graphics, in MUDs you are limited only by your imagination.
 
  ## Plans
  This project is the beginning of a rudimentary custom MUD. Well, I guess this would be
