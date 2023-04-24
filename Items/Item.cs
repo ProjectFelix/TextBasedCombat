@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TextBasedCombat.Items
 {
-    abstract class Item
+    public abstract class Item
     {
         public string Name { get; set; }
         public string Slot { get; set; }

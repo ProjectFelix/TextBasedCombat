@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TextBasedCombat.World
 {
-    class Node
+    public class Node
     {
         public Room Room { get; set; }
         public List<Room> Links { get; set; }

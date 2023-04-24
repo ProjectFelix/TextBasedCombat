@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace TextBasedCombat.Items
 {
-    class Weapon : Item
+    public class Weapon : Item
     {
         public int[] Damage { get; }
         public string AttackType { get; }
+        public float Delay { get; }
 
-        public Weapon(string name, string slot, int[] dmg, string att_type) : base(name, slot)
+        public Weapon(string name, string slot, int[] dmg, string att_type, float delay) : base(name, slot)
         {
             Name = name;
             Slot = slot;
             Damage = dmg;
             AttackType = att_type;
+            Delay = delay;
         }
     }
 }

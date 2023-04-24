@@ -5,3 +5,11 @@ C:\Users\James\source\repos\TextBasedCombat\obj\Debug\TextBasedCombat.csprojAsse
 C:\Users\James\source\repos\TextBasedCombat\obj\Debug\TextBasedCombat.csproj.CoreCompileInputs.cache
 C:\Users\James\source\repos\TextBasedCombat\obj\Debug\TextBasedCombat.exe
 C:\Users\James\source\repos\TextBasedCombat\obj\Debug\TextBasedCombat.pdb
+C:\Users\James\OneDrive\Documents\GitHub\TextBasedCombat\bin\Debug\TextBasedCombat.exe.config
+C:\Users\James\OneDrive\Documents\GitHub\TextBasedCombat\bin\Debug\TextBasedCombat.exe
+C:\Users\James\OneDrive\Documents\GitHub\TextBasedCombat\bin\Debug\TextBasedCombat.pdb
+C:\Users\James\OneDrive\Documents\GitHub\TextBasedCombat\obj\Debug\TextBasedCombat.csproj.AssemblyReference.cache
+C:\Users\James\OneDrive\Documents\GitHub\TextBasedCombat\obj\Debug\TextBasedCombat.csproj.SuggestedBindingRedirects.cache
+C:\Users\James\OneDrive\Documents\GitHub\TextBasedCombat\obj\Debug\TextBasedCombat.csproj.CoreCompileInputs.cache
+C:\Users\James\OneDrive\Documents\GitHub\TextBasedCombat\obj\Debug\TextBasedCombat.exe
+C:\Users\James\OneDrive\Documents\GitHub\TextBasedCombat\obj\Debug\TextBasedCombat.pdb

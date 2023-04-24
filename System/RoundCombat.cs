@@ -126,7 +126,7 @@ namespace TextBasedCombat
             }
         }
 
-        static void StartCombat(Unit npc)
+        void StartCombat(Unit npc)
         {
             GameState.Player.inCombat = true;
             GameState.Player.Targeting = npc;

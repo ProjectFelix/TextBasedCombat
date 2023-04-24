@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TextBasedCombat.World
 {
-    class Room
+    public class Room
     {
         public string RoomName { get; }
         public string Description { get; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TextBasedCombat.Items
 {
-    class Armor : Item
+    public class Armor : Item
     {
         public int ArmorValue { get; }
         public int DodgeChance { get; }

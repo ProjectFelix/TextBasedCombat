@@ -2,16 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using TextBasedCombat.Events.Contracts;
 using TextBasedCombat.Items;
 
 namespace TextBasedCombat.System
 {
     public class Main
     {
-        public void Main_Thread()
+        public IEventPublisher Publisher;
+        public GameState GameState;
+        public CombatSystem CombatSystem;
+        public Main(IEventPublisher _eventPublisher)
         {
-            GameState.GameInit();
+            Publisher = _eventPublisher;
+            GameState = new GameState(_eventPublisher);
+            CombatSystem = new CombatSystem(GameState);
+        }
+        public async void Main_Thread()
+        {
             string userInput;
             string[] commands;
             Console.ForegroundColor = ConsoleColor.White;
@@ -26,7 +36,12 @@ namespace TextBasedCombat.System
 
             while (GameState.IsPlaying)
             {
-                GameState.Player.DisplayPrompt();
+                if (!GameState.Player.inCombat)
+                {
+                    GameState.Player.DisplayPrompt();
+                }
+
+                
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 userInput = Console.ReadLine();
                 commands = userInput.Split(' ');
@@ -47,10 +62,11 @@ namespace TextBasedCombat.System
                             if (mob.Name.ToLower().Contains(commands[1].ToLower()))
                             {
                                 // This is the delay-based combat. But its running on the main thread
-                                //StartCombat(mob);
+                                CancellationTokenSource cts = new CancellationTokenSource();
+                                CombatSystem.StartCombat(mob, cts);
 
                                 // This is the round-based combat. Spawns a combat thread so player can still issue commands.
-                                RoundCombat.SpawnCombatThread(mob);
+                                //RoundCombat.SpawnCombatThread(mob);
                                 break;
                             }
                         }
@@ -101,11 +117,15 @@ namespace TextBasedCombat.System
                     case "inventory":
                         GameState.Player.DisplayInventory();
                         break;
+                    case "cast":
+                        // TODO:
+                        break;
                     default:
                         break;
 
 
                 }
+                //await Task.Delay(500);
             }
         }
     }

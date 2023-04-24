@@ -7,14 +7,18 @@ using System.Threading.Tasks;
 using TextBasedCombat.World;
 using TextBasedCombat.Items;
 using TextBasedCombat.System;
+using TextBasedCombat.Events.Contracts;
+using TextBasedCombat.Events;
 
 namespace TextBasedCombat
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
-            var system = new Main();
+            IEventPublisher publisher = new EventPublisher();
+            var system = new Main(publisher);
             system.Main_Thread();
 
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TextBasedCombat.World
 {
-    static class Map
+    public static class Map
     {
         // Im thinking about using a graph to create a map the player can navigate through
         // Just going to start off with basic rooms for now, though.

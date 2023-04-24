@@ -5,17 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using TextBasedCombat.World;
 using TextBasedCombat.Items;
+using TextBasedCombat.Events.Contracts;
 
 namespace TextBasedCombat
 {
-    class Player
+    public class Player
     {
+        private readonly IEventPublisher _eventPublisher;
         public int CurrentHealth { get; set; }
         public int MaxHealth { get; set; }
         public int CurrentMana { get; set; }
         public int MaxMana { get; set; }
         public int[] Damage { get; set; }
         public bool inCombat { get; set; }
+        public bool IsCasting { get; set; }
         public int NumAttacks { get; set; }
         public Unit Targeting { get; set; }
         public Room CurrentRoom { get; set; }
@@ -23,6 +26,8 @@ namespace TextBasedCombat
         public int Armor { get; set; }
         public int DodgeChance { get; set; }
         public float CritChance { get; set; }
+        public float Delay { get; set; }
+        public int Regen { get; set; }
         public Dictionary<string, Item> EquippedItems { get; set; } = new Dictionary<string, Item>
         {
             {"Head", null },
@@ -34,7 +39,9 @@ namespace TextBasedCombat
             {"Offhand", null }
         };
 
-        public Player()
+        public Weapon Mainhand { get; set; }
+
+        public Player(IEventPublisher eventPublisher)
         {
             CurrentHealth = 400;
             MaxHealth = 400;
@@ -46,7 +53,20 @@ namespace TextBasedCombat
             Inventory = new List<Item>();
             Armor = 2;
             DodgeChance = 0;
-            CritChance = 5;
+            CritChance = 5.0f;
+            Delay = 1.8f;
+            Regen = 3;
+            _eventPublisher = eventPublisher;
+            _eventPublisher.GameTick += OnGameTick;
+        }
+
+        private void OnGameTick()
+        {
+            Console.WriteLine("Game tick");
+            if (CurrentHealth < MaxHealth)
+            {
+                CurrentHealth = Math.Min(CurrentHealth + Regen, MaxHealth);
+            }
         }
 
         public void DisplayPrompt()
@@ -73,6 +93,10 @@ namespace TextBasedCombat
             
             if (EquippedItems[item.Slot] != null) AddItemToInventory(EquippedItems[item.Slot]);
             EquippedItems[item.Slot] = item;
+            if (item is Weapon)
+            {
+                Mainhand = (Weapon)item;
+            }
             Inventory.Remove(item);
             
         }
